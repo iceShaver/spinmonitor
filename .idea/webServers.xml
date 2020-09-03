@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="353058c5-02e3-43d3-a8f0-8045f1feb149" name="192.168.55.109/kamil" url="http://localhost">
+        <fileTransfer mountedRoot="/mnt/network/kamil" accessType="MOUNT" port="0" />
+      </webServer>
+    </option>
+  </component>
+</project>
