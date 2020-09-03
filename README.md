@@ -1,8 +1,7 @@
 # SpinMonitor
 
-## description
-Application which allows to track HDD spinning status and generate statistics. Useful for controlling disks consumed
- energy and spin up count.
+## Description
+Linux HDD activity monitoring application.
 
 ## Architecture
 client - server (daemon) architecture. 
@@ -24,3 +23,6 @@ client:
 * sdparm
 * lsof
 * boost
+
+## Other
+* saves logs to working directory

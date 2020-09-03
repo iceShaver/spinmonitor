@@ -16,7 +16,7 @@ auto getCurrentDateStr() -> std::string;
 
 
 
-// human-readable duration ostream
+// human-readable std::chrono::duration ostream
 template<typename T>
 std::ostream &operator<<(std::ostream &os, std::chrono::duration<T> duration) {
   auto days = std::chrono::duration_cast<std::chrono::days>(duration);
@@ -37,7 +37,7 @@ std::ostream &operator<<(std::ostream &os, std::chrono::duration<T> duration) {
 
 
 template<typename F>
-constexpr inline void debug(F f) {
+constexpr inline auto debug(F f) -> void {
   if constexpr (CFG::DEBUG) {
     f();
   }
@@ -45,7 +45,7 @@ constexpr inline void debug(F f) {
 
 
 template<typename S>
-constexpr inline void log(S str, uint log_level = 0u) {
+constexpr inline auto log(S str, uint log_level = 0u) -> void {
   if (log_level <= CFG::LOG_LEVEL) {
     std::clog << getCurrentDateStr() << " " << str << std::endl;
   }

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(SpinMonitor)
+project(spinmonitor)
 
 set(CMAKE_CXX_STANDARD 20)
 set(Boost_USE_STATIC_LIBS ON)
