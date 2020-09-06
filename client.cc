@@ -10,6 +10,7 @@
 #include <fcntl.h>
 #include <fstream>
 #include <iostream>
+#include <memory>
 #include <poll.h>
 #include <string>
 #include <sys/stat.h>
@@ -36,6 +37,7 @@ auto Client::getDisks() -> std::vector<std::unique_ptr<Disk>> {
   // Recv DISKS_ARRAY
   log("Opening "s + CFG::DAEMON_OUT_PIPE_FILE);
 
+  // wait for daemon to create DAEMON_OUT_PIPE_FILE
   do {
     pipeFdPoll.fd = open(CFG::DAEMON_OUT_PIPE_FILE, O_RDONLY);
   } while (pipeFdPoll.fd == -1 && errno == ENOENT && (std::this_thread::sleep_for(1ms), true));
@@ -68,6 +70,7 @@ auto Client::getDisks() -> std::vector<std::unique_ptr<Disk>> {
     return {};
   }
   log("Received " + std::to_string(received_bytes) + " / " + std::to_string(dataHeader.bytes) + " bytes");
+  close(pipeFdPoll.fd);
   return Disk::deserializeMuliple(bytes);
 }
 
@@ -76,7 +79,6 @@ auto Client::Init() -> void {
   isRunning = true;
   log("__________________________________");
 }
-
 
 
 auto Client::Run() -> void {
