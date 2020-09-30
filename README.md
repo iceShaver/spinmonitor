@@ -21,8 +21,8 @@ client:
 ## Dependencies
 * smartmontools
 * sdparm
+* hdparm
 * lsof
-* boost
 
 ## Other
 * saves logs to working directory
